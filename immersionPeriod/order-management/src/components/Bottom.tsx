@@ -2,6 +2,7 @@ import OrderCard from "./bottom/OrderCard";
 import { TabContext, TabTypes } from "@/app/page";
 import { useContext, useState } from "react";
 import { data as initialData } from "@/utils/data";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Bottom() {
     const { tabSelected, searchQuery } = useContext(TabContext);
@@ -15,8 +16,8 @@ export default function Bottom() {
                         ...order,
                         status:
                             order.status === TabTypes.New ? TabTypes.Cooking :
-                            order.status === TabTypes.Cooking ? TabTypes.Ready :
-                            order.status === TabTypes.Ready ? "Done" : "",
+                                order.status === TabTypes.Cooking ? TabTypes.Ready :
+                                    order.status === TabTypes.Ready ? "Done" : "",
                     }
                     : order
             )
@@ -24,8 +25,8 @@ export default function Bottom() {
     };
 
     // Filter orders by status & search query
-    const filteredOrders = orders.filter(order => 
-        searchQuery 
+    const filteredOrders = orders.filter(order =>
+        searchQuery
             ? order.id.toLowerCase().includes(searchQuery.toLowerCase()) // Ignore tabSelected if searching
             : order.status === tabSelected // Show based on selected tab if no search query
     );
@@ -38,23 +39,45 @@ export default function Bottom() {
             </div>
 
             {/* Cards */}
-            {
-                filteredOrders.length > 0 ?
-                filteredOrders.map(
-                        (order, index) =>
-                            <OrderCard key={index}
-                                orderID={order.id}
-                                dateTime={order.dateTime}
-                                status={TabTypes[order.status as keyof typeof TabTypes]}
-                                items={order.items}
-                                prepTime={order.prepTime}
-                                amount={order.amount} 
-                                updateOrderStatus={updateOrderStatus}
-                            />
-                    )
-                    :
-                    <p className="text-gray-400 text-center w-full">No Orders are available</p>
-            }
+            <AnimatePresence>
+                {
+                    filteredOrders.length > 0 ?
+                        filteredOrders.map(
+                            (order, index) => (
+                                <motion.div
+                                    key={order.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 40 }}
+                                    transition={{ duration: 0.3, ease: "easeOut" }}
+                                    className="w-full"
+                                >
+
+                                    <OrderCard key={index}
+                                        orderID={order.id}
+                                        dateTime={order.dateTime}
+                                        status={TabTypes[order.status as keyof typeof TabTypes]}
+                                        items={order.items}
+                                        prepTime={order.prepTime}
+                                        amount={order.amount}
+                                        updateOrderStatus={updateOrderStatus}
+                                    />
+                                </motion.div>
+                            )
+
+                        )
+                        : (
+                            <motion.p
+                                className="text-gray-400 text-center w-full"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                            >
+                                No Orders are available
+                            </motion.p>
+                        )
+                }
+            </AnimatePresence>
         </div>
     );
 };

@@ -144,7 +144,7 @@ export const data = [
   {
     id: "#123470",
     dateTime: "2025-05-1720:10:00",
-    status: "Ready",
+    status: "Done",
     items: [{ name: "Brownie with Ice Cream", quantity: 1 }],
     prepTime: "12 mins",
     amount: 180,
