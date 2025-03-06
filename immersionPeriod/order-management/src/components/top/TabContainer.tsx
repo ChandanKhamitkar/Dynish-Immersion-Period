@@ -7,11 +7,12 @@ import { motion } from "framer-motion";
 export default function TabContainer() {
     const { tabSelected, setTabSelected } = useContext(TabContext);
     return (
+        
         <div className="w-full flex justify-between items-center space-x-4 select-none">
             <div className="w-full bg-[#F2F7F6] rounded-4xl px-4 py-2 min-h-8 flex justify-center items-center space-x-6">
-                <Tab isSelected={tabSelected === TabTypes.New} txt="New" num={data.filter(item => item.status === tabSelected).length} changeTab={() => setTabSelected(TabTypes.New)} />
-                <Tab isSelected={tabSelected === TabTypes.Cooking} txt="Cooking" num={data.filter(item => item.status === tabSelected).length} changeTab={() => setTabSelected(TabTypes.Cooking)} />
-                <Tab isSelected={tabSelected === TabTypes.Ready} txt="Ready" num={data.filter(item => item.status === tabSelected).length} changeTab={() => setTabSelected(TabTypes.Ready)} />
+                <Tab isSelected={tabSelected === TabTypes.New} txt="New" num={data.filter(item => item.status === TabTypes.New).length} changeTab={() => setTabSelected(TabTypes.New)} />
+                <Tab isSelected={tabSelected === TabTypes.Cooking} txt="Cooking" num={data.filter(item => item.status === TabTypes.Cooking).length} changeTab={() => setTabSelected(TabTypes.Cooking)} />
+                <Tab isSelected={tabSelected === TabTypes.Ready} txt="Ready" num={data.filter(item => item.status === TabTypes.Ready).length} changeTab={() => setTabSelected(TabTypes.Ready)} />
             </div>
             <FaHistory className={` ${tabSelected === TabTypes.Done ? "text-[#FF690F]" : "text-[#7F7771]"} cursor-pointer hover:scale-105 hover:text-black hover:transition-all hover:ease-in-out`} onClick={() => setTabSelected(TabTypes.Done)}/>
         </div>
