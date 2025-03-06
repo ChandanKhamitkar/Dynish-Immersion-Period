@@ -12,7 +12,8 @@ interface OrderCardProps {
     status: TabTypes;
     items: FoodItem[];
     prepTime: string;
-    amount: number
+    amount: number;
+    updateOrderStatus: (orderID: string) => void;
 }
 
 export default function OrderCard(props: OrderCardProps) {
@@ -41,7 +42,9 @@ export default function OrderCard(props: OrderCardProps) {
             <div className="w-[80%] h-[2px] mx-auto bg-[#968F89]/[0.8] rounded-4xl  my-5"></div>
 
             {/* Actions buttons */}
-            <div className={`px-5 py-2 rounded-lg ${props.status === 'New' ? "bg-[#2B7FFF]/[0.3] text-[#2B7FFF]" : props.status === 'Cooking' ? "bg-[#F4B400]/[0.3] text-[#F4B400]" : props.status === 'Ready' ? "bg-[#34A853]/[0.3] text-[#34A853]" : ""}  text-sm font-semibold cursor-pointer tracking-wide self-end`}>
+            <div 
+                onClick={() => props.updateOrderStatus(props.orderID)}
+                className={`px-5 py-2 rounded-lg ${props.status === 'New' ? "bg-[#2B7FFF]/[0.3] text-[#2B7FFF]" : props.status === 'Cooking' ? "bg-[#F4B400]/[0.3] text-[#F4B400]" : props.status === 'Ready' ? "bg-[#34A853]/[0.3] text-[#34A853]" : ""}  text-sm font-semibold cursor-pointer tracking-wide self-end`}>
                 {props.status === 'New' ? "Start" : props.status === 'Cooking' ? "Ready" : props.status === 'Ready' ? "Complete" : ""}</div>
         </div>
     );
