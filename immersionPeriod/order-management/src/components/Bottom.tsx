@@ -1,5 +1,6 @@
 import OrderCard from "./bottom/OrderCard";
-import { TabContext, TabTypes } from "@/app/page";
+import { TabContext } from "@/context/TabContext";
+import { TabTypes } from "@/utils/tabTypes";
 import { useContext, useState } from "react";
 import { data as initialData } from "@/utils/data";
 import { motion, AnimatePresence } from "framer-motion";
@@ -43,7 +44,7 @@ export default function Bottom() {
     );
 
     return (
-        <div className="w-full flex-grow bg-[#F2F7F6] flex flex-col justify-start items-start space-y-6 rounded-t-4xl drop-shadow-2xl px-6 pt-3 py-6 overflow-y-scroll">
+        <div className="w-full flex-grow bg-[#F2F7F6] flex flex-col justify-start items-start space-y-6 rounded-t-4xl drop-shadow-2xl px-3 sm:px-6 pt-3 py-6 overflow-y-scroll">
             {/* Draggable Indicator */}
             <div className="sticky top-0 w-full">
                 <div className="w-2/5 h-1 bg-[#D9D9D9]/[0.8] rounded-4xl mx-auto mb-3"></div>

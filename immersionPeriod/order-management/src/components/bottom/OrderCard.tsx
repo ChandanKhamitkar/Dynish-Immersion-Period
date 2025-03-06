@@ -1,5 +1,5 @@
 import { PiTimerBold } from "react-icons/pi";
-import { TabTypes } from "@/app/page";
+import { TabTypes } from "@/utils/tabTypes";
 import { RiBillLine } from "react-icons/ri";
 
 type FoodItem = {
@@ -18,25 +18,22 @@ interface OrderCardProps {
 }
 
 export default function OrderCard(props: OrderCardProps) {
-    const updateOrderStatus = () => {
-
-    }
     return (
         <div className="w-full h-fit px-5 py-3 flex flex-col justify-start items-start rounded-xl text-left bg-white shadow-md">
-            <p className="text-[#FF690F] font-medium text-base mb-1"><span>{props.orderID}</span> <span className="text-[#78736F]">|</span> <span className="text-[#78736F] text-xs">Take away</span></p>
+            <p className="text-[#FF690F] font-medium text-sm sm:text-base mb-1"><span>{props.orderID}</span> <span className="text-[#78736F]">|</span> <span className="text-[#78736F] text-[10px] sm:text-xs ">Take away</span></p>
 
-            <p className="text-[#78736F] text-xs font-light mb-2">{props.dateTime}</p>
+            <p className="text-[#78736F] text-[10px] sm:text-xs font-light mb-2">{props.dateTime}</p>
 
             <ul className="ml-4 mb-3">
                 {
-                    props.items.map((item, index) => <li key={index} className="text-black font-medium list-disc text-wrap">{item.name} <span className="text-[#7F7771] font-semibold">x{item.quantity}</span></li>)
+                    props.items.map((item, index) => <li key={index} className="text-black font-medium list-disc text-wrap sm:text-base text-xs">{item.name} <span className="text-[#7F7771] font-semibold">x{item.quantity}</span></li>)
                 }
             </ul>
 
             <div className="w-full flex justify-between items-center">
                 <p className="flex space-x-2"><span><PiTimerBold className="text-[#78736F]" size={16} /> </span> <span className="text-black text-xs">{props.prepTime}</span></p>
 
-                <p className="text-[#FF690F] font-semibold ">{props.amount}/-</p>
+                <p className="text-[#FF690F] font-semibold text-sm sm:text-base">{props.amount}/-</p>
             </div>
 
             {/* Divider */}
@@ -55,7 +52,7 @@ export default function OrderCard(props: OrderCardProps) {
                             ? "bg-[#2B7FFF]/[0.3] text-[#2B7FFF]" :
                             props.status === 'Cooking'
                                 ? "bg-[#F4B400]/[0.3] text-[#F4B400]"
-                                : "bg-[#34A853]/[0.3] text-[#34A853]"}  text-sm font-semibold cursor-pointer tracking-wide self-end`}>
+                                : "bg-[#34A853]/[0.3] text-[#34A853]"} text-xs sm:text-sm font-semibold cursor-pointer tracking-wide self-end`}>
                     {props.status === 'New' ? "Start" : props.status === 'Cooking' ? "Ready" : props.status === 'Ready' ? "Complete" : "Done"}</div>
             </div>
         </div>

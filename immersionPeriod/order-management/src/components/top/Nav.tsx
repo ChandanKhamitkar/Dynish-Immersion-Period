@@ -12,7 +12,7 @@ export default function Nav() {
 
             {/* Title */}
             <div className="flex justify-center items-center space-x-3">
-                <p className="font-medium tracking-wide">
+                <p className="font-medium tracking-wide text-sm sm:text-base">
                     Manage Orders
                 </p>
                 <div className="w-3 h-3 bg-[#00C951] rounded-full"></div>
