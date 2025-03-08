@@ -27,7 +27,7 @@ interface TabProps {
 
 const Tab = (props: TabProps) => {
     return (
-        <div className="relative flex-1 text-center cursor-pointer px-4 py-2 text-nowrap font-medium" onClick={props.changeTab}>
+        <div className="relative flex-1 flex justify-center items-center text-center cursor-pointer px-4 py-2 text-nowrap font-medium" onClick={props.changeTab}>
             {props.isSelected && (
                 <motion.div
                     className="absolute bottom-0 left-0 right-0 bg-[#FF690F] h-1"
@@ -37,8 +37,8 @@ const Tab = (props: TabProps) => {
                     transition={{ duration: 0.2, ease: "easeOut" }}
                 />
             )}
-            <p className={`relative text-sm ${props.isSelected ? "text-[#FF690F]" : "text-[#7F7771]"}`}>
-                {props.txt} <span className="text-xs">({props.num})</span>
+            <p className={`relative  text-xs sm:text-sm mx-auto ${props.isSelected ? "text-[#FF690F]" : "text-[#7F7771]"}`}>
+                {props.txt} <span className="text-[10px] sm:text-xs">({props.num})</span>
             </p>
         </div>
     );
