@@ -1,25 +1,29 @@
-import { FaArrowLeft } from "react-icons/fa6";
-import { LuSettings } from "react-icons/lu";
+import { FaChevronLeft } from "react-icons/fa";
+import { HiOutlineUser } from "react-icons/hi2";
+import RippleDot from "./RippleDot";
 
 export default function Nav() {
     return (
-        <div className="w-full flex justify-between items-center text-black">
+        <div className="w-full px-6 flex justify-between items-center text-black">
 
-            {/* back Navigator */}
-            <div className="w-9 h-9 bg-[#D9D9D9]/[0.4] rounded-full flex justify-center items-center cursor-pointer">
-                <FaArrowLeft size={12}/>
+            {/* Left Section (Back Button + Title) */}
+            <div className="flex items-center space-x-3">
+                {/* Back Navigator */}
+                <div className="w-9 h-9 bg-[#D9D9D9]/[0.4] rounded-full flex justify-center items-center cursor-pointer">
+                    <FaChevronLeft size={14} className="opacity-80 text-gray-800" />
+                </div>
+
+                {/* Title */}
+                <div className="flex items-center space-x-3">
+                    <p className="font-semibold tracking-wide text-sm sm:text-lg">
+                        Live Orders
+                    </p>
+                    <RippleDot/>
+                </div>
             </div>
 
-            {/* Title */}
-            <div className="flex justify-center items-center space-x-3">
-                <p className="font-medium tracking-wide text-sm sm:text-base">
-                    Manage Orders
-                </p>
-                <div className="w-3 h-3 bg-[#00C951] rounded-full"></div>
-            </div>
-
-            {/* Settings */}
-            <LuSettings className="text-[#696969] cursor-pointer" size={20}/>
+            {/* User */}
+            <HiOutlineUser className="cursor-pointer text-gray-700" size={28} />
         </div>
-    )
-};
+    );
+}

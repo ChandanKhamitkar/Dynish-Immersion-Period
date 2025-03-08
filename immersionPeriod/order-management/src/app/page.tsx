@@ -16,7 +16,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   return (
     <div className={`bg-[#F3F4F6] w-full h-screen flex justify-center items-start ${poppins.className}`}>
-      <div className="w-[90%] sm:w-[450px] h-full flex flex-col space-y-8">
+      <div className="w-[90%] sm:w-[450px] h-full flex flex-col space-y-4">
         <TabContext.Provider value={{ tabSelected, setTabSelected, searchQuery, setSearchQuery }}>
           <Top />
           <Bottom />
